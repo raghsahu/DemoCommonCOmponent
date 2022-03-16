@@ -1,12 +1,13 @@
 import Login from './Login';
-import SignIn from './SignIn';
+import SignUp from './SignUp';
 import Market from './Market';
 import Profile from './Profile';
+import Splash from './Splash';
 
 export {
-  // Splash,
+  Splash,
   Login,
-  SignIn,
+  SignUp,
   Market,
   Profile,
 };

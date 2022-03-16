@@ -6,12 +6,16 @@ import { COLORS,  } from '../assets';
 
 //COMMON COMPONENT
 import { Button, Header, Text, Input } from '../components';
+import {LocalizationContext} from '../context/LocalizationProvider';
+
 
 
 function Login(props) {
-
+  const {getTranslation} = useContext(LocalizationContext);
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+
+    
 
 
     return (
@@ -22,11 +26,11 @@ function Login(props) {
             style={styles.container}
             showsVerticalScrollIndicator={false}>
            <Header
-            title={'Log In'}
+            title={getTranslation('login')}
             centerTitleStyle={{marginLeft: 30}}
-            onRightTitle={'Sign Up'}
+            onRightTitle={getTranslation('sign_up')}
             onRight={() => { 
-                        props.navigation.navigate('SignIn')
+                        props.navigation.navigate('SignUp')
                     }}
             // onLeftTitle={'Back'}
             // onLeft={() => { 
@@ -58,6 +62,7 @@ function Login(props) {
               style={[styles.inputView, { marginTop: 100,  }]}
               title={'Log In'}
               onPress={() => {
+               
                  props.navigation.navigate('Home')
               }}
             />
@@ -70,7 +75,7 @@ function Login(props) {
               onPress={() => {
                 
               }}>
-              {'Forgot your Password?'}
+              {getTranslation('forgot_your_pw')}
             </Text>
           </ScrollView>
         </SafeAreaView>

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 //ASSETS
-import {COLORS} from '../assets';
+import {COLORS, IMAGES} from '../assets';
 
 //COMMON COMPONENT
 import {
@@ -25,6 +25,7 @@ import {
 } from '../components';
 
 import moment from 'moment'; // date format
+import {LocalizationContext} from '../context/LocalizationProvider';
 
 
 const options = [
@@ -51,7 +52,21 @@ const optionsProfession = [
   },
 ];
 
-function SignIn(props) {
+const optionsLanguage = [
+  {
+    key: '1',
+    label: 'English',
+    value: 'English',
+  },
+  {
+    key: '2',
+    label: 'French',
+    value: 'French',
+  },
+ 
+];
+
+function SignUp(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
@@ -62,6 +77,10 @@ function SignIn(props) {
   const [show, setShow] = useState(false);
   const [selectDate, setSelectDate] = useState('');
   const [selectedSex, setSelectedSex] = useState('Sex');
+  const [selectedLang, setSelectedLang] = useState('English');
+  let [selectedLanguage, setSelectedLanguage] = useState('en');
+  const {getTranslation, setI18nConfig, saveUserLanguage} =
+  useContext(LocalizationContext);
 
 
   const onChange = (event, selectedDate) => {
@@ -94,6 +113,31 @@ function SignIn(props) {
 
   const setCheck = checkStatus => {
     setSelection(checkStatus);
+  };
+
+  const onSelectLanguage = () => {
+    if (selectedLanguage) {
+      
+      setI18nConfig(selectedLanguage);
+      saveUserLanguage(selectedLanguage);
+ 
+    } else {
+      Alert.alert('', 'Please select a language', [
+        {
+          text: getTranslation('ok'),
+          onPress: () => {},
+        },
+      ]);
+    }
+  };
+  const onValueChange1 = item => {
+    setSelectedLang(item);
+    if (item == 'English') {
+      setSelectedLanguage('en');
+    } else if (item == 'French') {
+      setSelectedLanguage('fr');
+    }
+   
   };
 
   return (
@@ -156,6 +200,13 @@ function SignIn(props) {
            options={optionsProfession}
          />
 
+        <DropdownPicker
+            placeholder={'English'}
+            selectedValue={selectedLang}
+            onChange={onValueChange1}
+            options={optionsLanguage}
+          />
+
           <View style={[styles.inputView, {marginTop: 20}]}>
             <RadioButtons
               selectedOption={selectedOption}
@@ -173,7 +224,10 @@ function SignIn(props) {
           <Button
             style={[styles.inputView, {marginTop: 30}]}
             title={'Sign Up'}
-            onPress={() => {}}
+            onPress={() => {
+              onSelectLanguage();
+              props.navigation.navigate('Splash')
+            }}
           />
          
         </ScrollView>
@@ -209,4 +263,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+export default SignUp;

@@ -1,0 +1,30 @@
+{
+    "login": "Connexion",
+    "login_to_your_account": "Connectez-vous à votre compte",
+    "enter_email_mobile": "Entrez Email ou Mobile",
+    "enter_pw": "Entrer le mot de passe",
+    "forgot_your_pw": "Mot de passe oublié?",
+    "forgot_pw": "Mot de passe oublié?",
+    "dont_have_account": "Vous n'avez pas de compte ?",
+    "sign_up": "S'inscrire",
+    "create_account": "Créer un compte",
+    "first_name": "Prénom",
+    "last_name": "Nom de famille",
+    "user_name": "Nom d'utilisateur",
+    "man": "Homme",
+    "women": "Femmes",
+    "date_of_birth": "Date de naissance",
+    "email_id": "Carte d'email",
+    "country": "De campagne",
+    "mobile_no": "Numéro de portable",
+    "address": "Adresse",
+    "city": "Ville",
+    "select_your_country": "Sélectionnez votre pays",
+    "password": "Mot de passe",
+    "confirm_pw": "Confirmez le mot de passe",
+    "terms_conditions": "termes et conditions",
+    "register": "S'inscrire",
+    "already_account": "Vous avez déjà un compte?"
+  
+
+}

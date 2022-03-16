@@ -3,9 +3,9 @@ import {View, StyleSheet, Image, Modal, Platform, LogBox} from 'react-native';
 
 //SCREENS
 import {
-  // Splash,
+  Splash,
   Login,
-  SignIn,
+  SignUp,
   Market,
   Profile,
 } from './src/screens';
@@ -18,6 +18,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 //CONTEXT
 import {APPContext, APPProvider} from './src/context/APPProvider';
+import {LocalizationProvider} from './src/context/LocalizationProvider';
 
 const {Navigator, Screen} = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -37,21 +38,24 @@ const BottomBar = () => {
 
 const App = () => {
   return (
+    <LocalizationProvider>
     <APPProvider>
       <NavigationContainer>
         <Navigator
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName={'Login'}>
+          initialRouteName={'Splash'}>
+          <Screen name="Splash" component={Splash} />
           <Screen name="Home" component={BottomBar} />
           <Screen name="Login" component={Login} />
-          <Screen name="SignIn" component={SignIn} />
+          <Screen name="SignUp" component={SignUp} />
           <Screen name="Market" component={Market} />
           <Screen name="Profile" component={Profile} />
         </Navigator>
       </NavigationContainer>
     </APPProvider>
+    </LocalizationProvider>
   );
 };
 
